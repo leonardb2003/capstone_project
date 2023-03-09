@@ -10,7 +10,7 @@ class User{
         const {emailAdd, userPass} = req.body;
         const strQry = 
         `
-        SELECT userID, firstName, lastName, cellPhone, emailAdd, userPass
+        SELECT userID, firstName, lastName, emailAdd, userPass, userRole, userProfile, joinDate
         FROM users
         WHERE emailAdd = ${emailAdd};
         `;
@@ -40,24 +40,23 @@ class User{
         })
     }
     fetchUsers(req, res){
-        const qry = 
+        const strQry = 
         `
-        SELECT userID, firstName, lastName, cellPhone, emailAdd, userPass
-        FROM users;
+        SELECT *  FROM users;
         `
         db.query(strQry, (err, data)=> {
-            if(err) throw err;
+             if(err) throw err;
             else res.status(200).json({results:data})
         })
     }
-    fetchUsers(req, res) {
-        const qry = 
+    fetchUser(req, res) {
+        const strQry = 
         `
         SELECT userID, firstName, lastName, emailAdd, userPass, userRole, userProfile, joinDate
         FROM users
         WHERE userID = ?;
         `
-        db.query(strQry, [req.params.id], (req, res)=> {
+        db.query(strQry, [req.params.id], (err, data)=> {
             if(err) throw err;
             else res.status(200).json({result:data})
         })
@@ -88,7 +87,7 @@ class User{
                     maxAge: 3600000,
                     httpOnly: true 
                 });
-                res.status(200).json({msg: "A user record was successfully recorded."})
+                res.status(200).json({msg: "A new user record was successfully recorded."})
             }
         })
     }
@@ -122,7 +121,7 @@ class User{
             (err)=>{
             if(err) throw err;
             res.status(200).json( {msg: 
-                "A record was removed from a database"} );
+                "This record was removed successfully from a database"} );
         })    
     }
 }
@@ -130,7 +129,7 @@ class User{
 // PRODUCTS
 class Product {
     fetchProducts(req, res) {
-        const strQry = `SELECT id, prodName, prodDes, category, price, prodQuantity, imgURL
+        const strQry = `SELECT prodID, prodName, prodDescription, category, price, prodQuantity, imgURL
         FROM products;`;
         db.query(strQry, (err, results)=> {
             if(err) throw err;
@@ -138,17 +137,18 @@ class Product {
         });
     }
     fetchProduct(req, res) {
-        const strQry = `SELECT id, prodName, prodDes, category, price, prodQuantity, imgURL
-        FROM Products
-        WHERE id = ?;`;
-        db.query(strQry, [req.params.id], (req, res)=> {
+        const strQry = `SELECT prodID, prodName, prodDescription, category, price, prodQuantity, imgURL
+        FROM products
+        WHERE prodID = ?;
+        `
+        db.query(strQry, [req.params.id], (err, results)=> {
             if(err) throw err;
             res.status(200).json({results: results})
         });
     }
     addProduct(req, res) {
         const strQry = 
-        `INSERT INTO Products
+        `INSERT INTO products
         SET ?;
         `;
         db.query(strQry, [req.body],
@@ -165,14 +165,14 @@ class Product {
      updateProduct(req, res) {
         const strQry = 
         `
-        UPDATE Products
+        UPDATE products
         SET ?
         WHERE id = ?
         `;
         db.query(strQry,[req.body, req.params.id],
             (err)=> {
                 if(err){
-                    res.status(400).json({err: "Unable to update a record."});
+                    res.status(400).json({err: "Could not update this record."});
                 }else{
                     res.status(200).json({msg: "The product was updated successfully."});
                 }
@@ -182,17 +182,32 @@ class Product {
      deleteProduct(req, res) {
         const strQry =
         `
-        DELETE FROM Products
+        DELETE FROM products
         WHERE prodID = ?;
         `;
         db.query(strQry, [req.params.id], (err)=> {
-            if(err) res.status(400).json({err: "The record was not found."});
-            res.status(200).json({msg: "A product was deleted."});
+            if(err) res.status(400).json({err: "This record was not found."});
+            res.status(200).json({msg: "A product was successfully deleted."});
         })
      }
 } 
+// cart
+class Cart {
+    fetchCart(req, res) {
+        const strQry = `SELECT prodID, prodName, prodDescription, category, price, prodQuantity, imgURL
+        FROM products;`;
+        db.query(strQry, (err, results)=> {
+            if(err) throw err;
+            res.status(200).json({results: results})
+        });
+
+    }
+
+}
+
 
 module.exports = {
     User,
-    Product
+    Product,
+    Cart
 }
