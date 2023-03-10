@@ -13,7 +13,7 @@ class User{
         SELECT userID, firstName, lastName, emailAdd, userPass, userRole, userProfile, joinDate
         FROM users
         WHERE emailAdd = ${emailAdd};
-        `;
+        `
         db.query(strQry, async(err, data)=> {
             if(err) throw err;
             if((!data) || (data == null)){
