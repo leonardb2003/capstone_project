@@ -158,7 +158,7 @@ class Product {
                 }else {
                     res.status(200).json({msg: "A product was successfully saved"});
                 }
-            }
+            } 
         );    
     
     }
@@ -167,7 +167,7 @@ class Product {
         `
         UPDATE products
         SET ?
-        WHERE id = ?
+        WHERE prodID = ?
         `;
         db.query(strQry,[req.body, req.params.id],
             (err)=> {
