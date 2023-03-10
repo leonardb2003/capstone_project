@@ -6,7 +6,7 @@ function createToken(user) {
         emailAdd: user.emailAdd,
         userPass: user.userPass
     },
-    process.env.SECRET_KEY,
+    process.env.Secret_Key,
     {
         expiresIn: '1h'
     });
@@ -18,7 +18,7 @@ function verifyAToken(req, res, next) {
         "Please register" ;
         const isValid = null;
         if(token !== "Please register") {
-            isValid = verify(token, process.env.SECRET_KEY);
+            isValid = verify(token, process.env.Secret_Key);
             if(isValid) {
                 req.authenticated = true;
                 next();
