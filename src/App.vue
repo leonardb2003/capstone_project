@@ -1,7 +1,10 @@
 <template>
+  <div class="background">
   <NavbarComp/>
+    <img src="https://i.postimg.cc/15TPKm9k/HD-wallpaper-cherry-blossoms-nature-spring.jpg" style="display: contents;">
   <router-view/>
   <FooterComp/>
+  </div>
 </template>
 <script>
 import NavbarComp from './components/NavbarComp.vue';

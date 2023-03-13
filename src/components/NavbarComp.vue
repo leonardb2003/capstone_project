@@ -16,7 +16,7 @@
           <i class="fa fa-home" aria-hidden="true"></i><router-link to ="/"> Home   </router-link>       
         </li>
         <li class="nav-item ">
-          <i class="fa fa-inbox" aria-hidden="true"></i><router-link to ="/about us"> About   </router-link>
+          <i class="fa fa-inbox" aria-hidden="true"></i><router-link to ="/about"> About   </router-link>
         </li>
         <li class="nav-item">
           <i class="fa fa-shopping-cart" aria-hidden="true"></i><router-link to ="/products"> Products   </router-link>     
@@ -25,7 +25,7 @@
           <i class="fa fa-lock" aria-hidden="true"></i><router-link to ="/admin"> Admin   </router-link>       
         </li>
         <li class="nav-item ">
-          <i class="fa fa-user" aria-hidden="true"></i><router-link to ="/login"> Login </router-link>
+          <i class="fa fa-user" aria-hidden="true"></i><router-link to ="/login"> Login   </router-link>
         </li>
         <li class="nav-item ">
           <i class="fa fa-user-plus" aria-hidden="true"></i><router-link to ="/register"> Register   </router-link>
@@ -43,3 +43,12 @@
   </div>
 </nav>
 </template>
+
+<style scoped>
+.nav-item{
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+
+</style>

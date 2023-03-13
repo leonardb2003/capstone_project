@@ -1,14 +1,21 @@
 <template>
   <div class="home">
-    <img src="https://i.postimg.cc/cJzPf428/c3093700897ec3752f1b8e51077a4dfb.jpg">
+    <h2>BE BRIGHT AND FEEL SPECIAL</h2>
   </div>
 </template>
 
 <script>
 </script>
-<style>
-.home{
-  background-image: url(https://i.postimg.cc/cJzPf428/c3093700897ec3752f1b8e51077a4dfb.jpg);
-
+<style scoped>
+.home h2{
+  font-size: 50px;
+  font-weight: 400;
+  font-family: 'Courier New', Courier, monospace;
+  margin-top: 80px;
+  color: #02237e;
 }
+/* .home{
+  background: linear-gradient(blue, black,purple,pink);
+  height: 100vh;
+} */
 </style>
