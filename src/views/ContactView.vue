@@ -14,7 +14,7 @@
                 <h4>Email:</h4>
                 <p>blossombee12@gmail.com</p>
             </div>
-            <div class="phone">
+            <div class="call">
                 <i class="fa fa-phone" aria-hidden="true"></i>
                 <h4>Call:</h4>
                 <p>+27 21 764 2309</p>
@@ -45,7 +45,7 @@
 </template>
 <style scoped>
 .contact-info span{
-    color: #02237e;
+    color: blueviolet;
     margin-top: 50px;  
 }
 .contact-info{
@@ -94,11 +94,13 @@
     height: 70px;
     width: 400px;
     margin-top: 35px;
+    border-radius: 4px;
 }
 .box textarea{
     margin-top: 60px;
     width: 500px;
     height: 150px;
+    border-radius: 5px;
 }
 .click button{
    background-color: blueviolet;
@@ -110,5 +112,11 @@
 }
 .click button [type="submit"]:hover{
     background: white;
+}
+.address, .email, h4 p{
+    color: black;
+}
+.call, h4 p{
+    color: black;
 }
 </style>

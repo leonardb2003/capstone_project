@@ -32,19 +32,48 @@
   </div>
   </div>
 </template>
+<script>
+import {computed} from '@vue/runtime-core';
+import { useStore } from 'vuex';
+export default {
+  setup() {
+    const payload = {
+      firstName: '',
+      lastName: '',
+      emailAdd: '',
+      userPass: '',
+      userProfile: '',
+      joinDate: '',
+    };
+    const store = useStore();
+    const signUp = ()=> {
+      store.dispatch("login", payload);
+      store.dispatch("FetchUsers");
+    }
+    const userMsg = 
+    computed( ()=>store.state.message)
+    return {
+      payload,
+      userMsg,
+      signUp
+    }
+  }
+}
+</script>
 <style scoped>
 .container{
   position: relative;
   background: transparent;
   width: 500px;
   height: 540px;
-  background-color: pink;
+  background-color: #b167e9;
   border: 2px solid #f5f1f4;
   border-radius: 40px;
   justify-content: center;
   align-items: center;
   box-shadow: 0 0 20px black;
   margin-top: 60px;
+  margin-bottom: 20px;
 }
 .container .form-box{
   width: 100%;
@@ -105,13 +134,13 @@
 .enter{
   width: 100%;
   height: 50px;
-  background: #ea909f;
+  background: #d290ea;
   border-radius: 5px;
   outline: none;
   cursor: pointer;
   font-weight: bold;
   font-size: 20px;
-  border: #ed91a0;
+  border: #ed91e8;
 }
 .remember-forgot label input{
   accent-color: #272020;

@@ -1,21 +1,49 @@
 <template>
-  <div class="home">
-    <h2>BE BRIGHT AND FEEL SPECIAL</h2>
+  <div class="typing-word">
+    <h2>Blossom into who you were meant to be</h2>
   </div>
+  <div class="home">
+    <img src="https://i.postimg.cc/RhXMHs1v/image-122-removebg-preview.png">
+  </div>
+ 
 </template>
 
 <script>
 </script>
 <style scoped>
-.home h2{
-  font-size: 50px;
-  font-weight: 400;
-  font-family: 'Courier New', Courier, monospace;
-  margin-top: 80px;
-  color: #02237e;
+.home img{
+  display: grid;
+  height: 100vh; 
 }
-/* .home{
-  background: linear-gradient(blue, black,purple,pink);
+.container{
   height: 100vh;
-} */
+  display: grid;
+  place-items: center;
+}
+.typing-word {
+  width: 38ch;
+  animation: typing 2s steps(40), blink .5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  /* border-right: 3px solid; */
+  font-family:'Courier New', Courier, monospace;
+  font-size: 2rem;
+  color: whitesmoke;
+  margin-top: 10px;
+}
+.word{
+  transform: translateY(-240%);
+}
+
+@keyframes typing {
+  from {
+    width: 0
+  }
+}
+    
+@keyframes blink {
+  50% {
+    border-color: transparent
+  }
+}
 </style>

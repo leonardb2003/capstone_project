@@ -11,10 +11,10 @@
                   <div class="card" >
                     <img v-bind:src="product.imgURL" class="card-img-top" alt="product" >
                     <div class="card-body">
-                      <h5 style="font-family: 'Courier New', Courier, monospace; font-weight: bold;" class="card-title">{{product.ProdName}}</h5>
+                      <h5 style="font-family: 'Courier New', Courier, monospace; font-weight: bold;">{{ product.prodName }}</h5>
                       <h5 style="font-family: 'Courier New', Courier, monospace;" class="card-title">{{product.category}}</h5>
                       <h5 style="font-family: 'Courier New', Courier, monospace; font-weight: 900;" class="card-title">R{{product.price}}</h5>
-                      <a href="#" class="btn btn-dark">Add To Cart</a>
+                      <button class="btn btn-dark">View More Details</button> <button class="btn btn-dark">Add To Cart</button>
                     </div>
                   </div>
                 </div>

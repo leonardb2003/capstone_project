@@ -42,6 +42,7 @@
   align-items: center;
   box-shadow: 0 0 20px black;
   margin-top: 60px;
+  margin-bottom: 20px;
 }
 .container .form-box{
   width: 100%;
@@ -125,3 +126,31 @@
   color: #383535;
 }
 </style>
+<script>
+import {computed} from '@vue/runtime-core';
+import { useStore } from 'vuex';
+export default {
+  setup() {
+    const payload = {
+      firstName: '',
+      lastName: '',
+      emailAdd: '',
+      userPass: '',
+      userProfile: '',
+      joinDate: '',
+    };
+    const store = useStore();
+    const signUp = ()=> {
+      store.dispatch("register", payload);
+      store.dispatch("FetchUsers");
+    }
+    const userMsg = 
+    computed( ()=>store.state.message)
+    return {
+      payload,
+      userMsg,
+      signUp
+    }
+  }
+}
+</script>

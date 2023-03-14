@@ -1,7 +1,6 @@
 <template>
   <div class="background">
   <NavbarComp/>
-    <img src="https://i.postimg.cc/15TPKm9k/HD-wallpaper-cherry-blossoms-nature-spring.jpg" style="display: contents;">
   <router-view/>
   <FooterComp/>
   </div>
@@ -30,11 +29,17 @@ nav {
 }
 
 nav a {
+  text-decoration: none;
   font-weight: bold;
-  color: #2c3e50;
+  color: rgb(255, 253, 253);
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: blueviolet;
 }
+.background{
+  background: linear-gradient(#62c8ea, blueviolet,rgb(244, 115, 154),#0073ff);
+  min-height: 100vh;
+}
+
 </style>
