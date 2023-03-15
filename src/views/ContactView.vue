@@ -21,7 +21,7 @@
             </div>
         </div>
             <div class="form">
-                <form>
+                <form action="https://formspree.io/f/moqzlyyd" method="POST">
                     <div class="input-box">
                         <label for="text">First Name</label>
                         <input type="text" name="name" placeholder="Your Name" required>

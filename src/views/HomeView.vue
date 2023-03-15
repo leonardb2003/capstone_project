@@ -5,7 +5,6 @@
   <div class="home">
     <img src="https://i.postimg.cc/RhXMHs1v/image-122-removebg-preview.png">
   </div>
- 
 </template>
 
 <script>
@@ -25,11 +24,12 @@
   animation: typing 2s steps(40), blink .5s step-end infinite alternate;
   white-space: nowrap;
   overflow: hidden;
-  /* border-right: 3px solid; */
+  /* border-right: 3px solid;  */
   font-family:'Courier New', Courier, monospace;
   font-size: 2rem;
-  color: whitesmoke;
+  color: whitesmoke; 
   margin-top: 10px;
+  float: right;
 }
 .word{
   transform: translateY(-240%);
