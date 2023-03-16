@@ -25,6 +25,12 @@ export default createStore({
     },
     setProduct(state, value) {
       state.product = value;
+    },
+    setSingleProduct(state, value) {
+      state.SingleProduct = value;
+    },
+    setMessage(state, value) {
+      state.message = value;
     }
   },
   actions: {
@@ -42,6 +48,33 @@ export default createStore({
       const {results,err} = await res.data;
       if(results){
         context.commit('setProducts',results)
+      }else{
+        context.commit('setMessage',err)
+      }
+    },
+    async register(context, payload){
+      const res= await axios.post(`${bedUrl}register`, payload);
+      const {msg,err} = await res.data;
+      if(msg){
+        context.commit('setMessage',msg)
+      }else{
+        context.commit('setMessage',err)
+      }
+    },
+    async login(context, payload){
+      const res= await axios.post(`${bedUrl}login`, payload);
+      const {msg,err} = await res.data;
+      if(msg){
+        context.commit('setMessage',msg)
+      }else{
+        context.commit('setMessage',err)
+      }
+    },
+    async SingleProduct(context, id){
+      const res= await axios.get(`${bedUrl}product/${id}`,)
+      const {results,err} = await res.data;
+      if(results){
+        context.commit('setProduct',results[0])
       }else{
         context.commit('setMessage',err)
       }

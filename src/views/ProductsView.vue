@@ -14,7 +14,9 @@
                       <h5 style="font-family: 'Courier New', Courier, monospace; font-weight: bold;">{{ product.prodName }}</h5>
                       <h5 style="font-family: 'Courier New', Courier, monospace;" class="card-title">{{product.category}}</h5>
                       <h5 style="font-family: 'Courier New', Courier, monospace; font-weight: 900;" class="card-title">R{{product.price}}</h5>
-                      <button class="btn btn-dark">View More Details</button> <button class="btn btn-dark">Add To Cart</button>
+                      <RouterLink :to="{name:'singleProduct', params:{id:product.prodID}}">
+                        <button class="btn btn-dark">View More</button></RouterLink>
+                       <button class="btn btn-dark">Add To Cart</button>
                     </div>
                   </div>
                 </div>
@@ -54,5 +56,5 @@ export default{
     height: 360px;
     object-fit: cover;
     margin-top: 10px;
- }
+ } 
 </style>

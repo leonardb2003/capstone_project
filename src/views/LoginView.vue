@@ -1,36 +1,33 @@
 <template>
- <div data-aos="fade-left"
+<form @submit.prevent= "login">
+  <!-- <div data-aos="fade-left"
      data-aos-anchor="#example-anchor"
      data-aos-offset="600"
-     data-aos-duration="600"> 
-
-  <div class="container">
-    <div class="form-box login">
-      <h2>Login</h2>
-      <form>
+     data-aos-duration="600"> -->
+     <div class="container">
+      <div class="form-box login">
+        <h2>Login</h2>
         <div class="insert-box">
           <i class="fa fa-envelope" aria-hidden="true"></i>
-          <input type="email" name="email" required>
+          <input type="email" name="email" v-model="payload.emailAdd" required>
           <label>Email</label>
         </div>
         <div class="insert-box">
           <i class="fa fa-lock" aria-hidden="true"></i>
-          <input type="password" name="password" required>
+          <input type="password" name="password" v-model="payload.emailAdd" required>
           <label>Password</label>
         </div>
         <div class="remember-forgot">
-          <label><input type="checkbox"> Remember Me </label>
-          <a href="#">Forgot Password?</a>
+          <label><input type="checkbox"> Remember Me </label><a href="#">Forgot Password?</a>
         </div>
-        <button type="submit" class="enter"> Login </button>
+        <button onclick="" class="enter"> Login </button>
         <div class="register-login">
           <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
         </div>
-
-      </form>
+      </div>
     </div>
-  </div>
-  </div>
+  <!-- </div> -->
+</form>
 </template>
 <script>
 import {computed} from '@vue/runtime-core';
@@ -38,24 +35,25 @@ import { useStore } from 'vuex';
 export default {
   setup() {
     const payload = {
-      firstName: '',
-      lastName: '',
       emailAdd: '',
       userPass: '',
-      userProfile: '',
-      joinDate: '',
     };
     const store = useStore();
-    const signUp = ()=> {
-      store.dispatch("login", payload);
-      store.dispatch("FetchUsers");
-    }
+    // const login = ()=> {
+    //   store.dispatch("login", payload);
+    //   store.dispatch("fetchUsers");
+    // }
     const userMsg = 
     computed( ()=>store.state.message)
+
     return {
       payload,
       userMsg,
-      signUp
+    }
+  },
+  methods: {
+    login() {
+      this.$store.dispatch("login", this.payload)
     }
   }
 }

@@ -46,11 +46,11 @@
 <style scoped>
 .contact-info span{
     color: blueviolet;
-    margin-top: 50px;  
+    margin-top: 50px; 
 }
 .contact-info{
     color: rgb(251, 246, 246);
-    margin-top: 50px;
+    margin-top: 50px; 
 }
 .container{
   display: flex;

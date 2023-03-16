@@ -1,5 +1,5 @@
 <template>
-    <div class="name">
+    <div class="users">
         <h1>Users</h1>
     </div>
     <div class="container">
@@ -106,6 +106,9 @@ export default{
     height: 130px;
 }
 .container{
+    margin-top: 30px;
+}
+ h1{
     margin-top: 30px;
 }
 </style>

@@ -1,40 +1,57 @@
 <template>
-<div data-aos="fade-left" data-aos-easing="linear" data-aos-duration="1500">
-    <div class="container">
-        <div class="form-box register">
-            <h2>Registration</h2>
-            <div class="insert-box">
-                <i class="fa fa-user" aria-hidden="true"></i>
-                <input type="text"  name="name" required>
-                <label>Username</label>
-            </div>
-            <div class="insert-box">
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-                <input type="email"  name="email"  required>
-                <label>Email</label>
-            </div>
-            <div class="insert-box">
-                <i class="fa fa-lock" aria-hidden="true"></i>
-                <input type="password" name="password" required>
-                <label>Password</label>
-            </div>
-            <div class="remember-forgot">
-                <label><input type="checkbox">I agree to all terms & conditions.</label>
-            </div>
-            <button type="submit" class="enter"> Register </button>
-            <div class="register-login">
-                <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
-            </div>
+    <form @submit.prevent="registration">
+      <!-- <div data-aos="fade-left" data-aos-easing="linear" data-aos-duration="1500"> -->
+        <div class="container">
+          <div class="form-box register">
+              <h2>SignUp Now</h2>
+              <div class="insert-box">
+                  <i class="fa fa-user" aria-hidden="true"></i>
+                  <input type="text"  name="firstName" v-model="payload.firstName" required>
+                  <label>FirstName</label>
+              </div>
+              <div class="insert-box">
+                  <i class="fa fa-user" aria-hidden="true"></i>
+                  <input type="text"  name="lastName"  v-model="payload.lastName" required>
+                  <label>LastName</label>
+              </div>
+              <div class="insert-box">
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                  <input type="email" name="email" v-model="payload.emailAdd" required>
+                  <label>EmailAdd</label>
+              </div>
+              <div class="insert-box">
+                  <i class="fa fa-lock" aria-hidden="true"></i>
+                  <input type="password" name="password" v-model="payload.userPass" required>
+                  <label>Password</label>
+              </div>
+              <div class="insert-box">
+                  <i class="fa fa-user-circle" aria-hidden="true"></i>
+                  <input type="text" name="name" v-model="payload.userRole" required>
+                  <label>UserRole</label>
+              </div>
+              <div class="insert-box">
+                  <i class="fa fa-picture-o" aria-hidden="true"></i>
+                  <input type="image" name="image" v-model="payload.userProfile" required>
+                  <label>UserProfile</label>
+              </div>
+              <div class="insert-box">
+                  <input type="date" name="date" v-model="payload.joinDate" required>
+              </div>
+              <div class="remember-forgot">
+                  <label><input type="checkbox">I agree to all terms & conditions.</label>
+              </div>
+              <button type="submit" class="enter"> Register </button>
+          </div>
         </div>
-    </div>
-</div>
+      <!-- </div> -->
+    </form>
 </template>
 <style scoped>
 .container{
   position: relative;
   background: transparent;
   width: 500px;
-  height: 620px;
+  height: 920px;
   background-color: #b167e9;
   border: 2px solid #f5f1f4;
   border-radius: 40px;
@@ -51,7 +68,7 @@
 .form-box h2{
   font-size: 60px;
   text-align: center;
-  color: #332f2f;
+  color: #f9f4f4;
 }
 .insert-box {
   margin: 40px 0;
@@ -136,20 +153,27 @@ export default {
       lastName: '',
       emailAdd: '',
       userPass: '',
+      userRole: 'User',
       userProfile: '',
       joinDate: '',
     };
     const store = useStore();
-    const signUp = ()=> {
-      store.dispatch("register", payload);
-      store.dispatch("FetchUsers");
-    }
+    // const register = (payload)=> {
+    //   store.dispatch("register", payload);
+    //   // return(payload);
+    // }
     const userMsg = 
     computed( ()=>store.state.message)
+
     return {
       payload,
       userMsg,
-      signUp
+      // register
+    }
+  },
+  methods: {
+    registration() {
+      this.$store.dispatch("register", this.payload);
     }
   }
 }
