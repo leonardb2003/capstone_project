@@ -14,11 +14,6 @@
   display: grid;
   height: 100vh; 
 }
-.container{
-  height: 100vh;
-  display: grid;
-  place-items: center;
-}
 .typing-word {
   width: 38ch;
   animation: typing 2s steps(40), blink .5s step-end infinite alternate;

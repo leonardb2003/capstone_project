@@ -20,9 +20,9 @@
         <div class="remember-forgot">
           <label><input type="checkbox"> Remember Me </label><a href="#">Forgot Password?</a>
         </div>
-        <button onclick="" class="enter"> Login </button>
+        <button class="enter"> Login </button>
         <div class="register-login">
-          <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
+          <p>Don't have an account? <router-link to ="/register"><a href="#" class="register-link">Register</a></router-link></p>
         </div>
       </div>
     </div>
@@ -145,13 +145,13 @@ export default {
   margin-right: 3px;
 }
 .register-login {
-  color: #383535;
+  color: black;
   text-align: center;
   font-size: 21px;
   margin: 30px;
 }
 .register-link  {
   text-decoration: none;
-  color: #383535;
+  color: black;
 }
 </style>

@@ -78,6 +78,15 @@ export default createStore({
       }else{
         context.commit('setMessage',err)
       }
+    },
+    async addUser(context, id){
+      const res= await axios.get(`${bedUrl}user/${id}`,)
+      const {results,err} = await res.data;
+      if(results){
+        context.commit('setUser',results[0])
+      }else{
+        context.commit('setMessage',err)
+      }
     }
   },
   modules: {

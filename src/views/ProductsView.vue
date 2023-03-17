@@ -1,6 +1,8 @@
 <template>
      <div>
-        <h2><span>P</span>roducts</h2>
+        <div class="name">
+        <h2>Products</h2>
+        </div>
         <div v-if="products == undefined">
             <SpinnerComp/>
         
@@ -47,6 +49,13 @@ export default{
 }
 </script>
 <style scoped>
+.name h2{
+    color: blueviolet;
+    font-family:'Courier New', Courier, monospace;
+    font-weight: 700;
+    font-size: 50px;
+    margin-top: 20px;
+}
 .card{
      width: 350px;
      margin-top: 50px;
@@ -56,5 +65,8 @@ export default{
     height: 360px;
     object-fit: cover;
     margin-top: 10px;
+ }
+ .btn{
+    margin: 10px;
  } 
 </style>
