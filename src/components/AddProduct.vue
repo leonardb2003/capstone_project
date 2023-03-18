@@ -1,40 +1,41 @@
 <template>
-       <div class="add">
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Add Product 
-</button>
+<div class="add">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Add Product
+  </button>
 </div>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="staticBackdrop" tabindex="-1" aria-labelledby="staticBackdrop" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Products</h1>
+        <h1 class="modal-title fs-5" id="staticBackdrop">Add Products</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" @submit="addProduct">
     
           <div class="col-md-6">
-            <label for="name" class="form-label"></label>
-            <input type="name" class="form-control" id="Your Name">
+            <label for="name" class="form-label">prodName</label>
+            <input type="prodName" class="form-control"  v-model="prodName">
           </div>
           <div class="col-md-6">
-            <label for="name" class="form-label">lastName</label>
-            <input type="name" class="form-control" id="name">
+            <label for="name" class="form-label">category</label>
+            <input type="category" class="form-control"  v-model="category">
           </div>
           <div class="col-md-6">
-            <label for="inputEmail4" class="form-label">EmailAdd</label>
-            <input type="email" class="form-control" id="inputEmail4">
+            <label for="text" class="form-label">price</label>
+            <input type="price" class="form-control" v-model="price">
           </div>
           <div class="col-md-6">
-            <label for="name" class="form-label">userRole</label>
-            <input type="name" class="form-control" id="name">
+            <label for="name" class="form-label">prodQuantity</label>
+            <input type="prodQuantity" class="form-control" id="name" v-model="prodQuantity">
           </div>
           <div class="col-md-6">
-            <label for="inputEmail4" class="form-label">userProfile</label>
-            <input type="email" class="form-control" id="inputEmail4">
+            <label for="imageURL" class="form-label">prodImg</label>
+            <input type="imageURL" class="form-control" id="imgURL" v-model="imgURL">
           </div>
+          <button class="btn btn-success mt-3" @click="($event) => addProduct()">
+            Add Product
+          </button>
         </div>
     
       </div>
@@ -45,3 +46,28 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      prodName: "",
+      category: "",
+      price: "",
+      prodQuantity: "",
+      imgURL: "",
+    };
+  },
+  methods: {
+    addProduct() {
+      const payload = {
+        prodName: this.prodName,
+        category: this.category,
+        price: this.price,
+        prodQuantity: this.prodQuantity,
+        imgURL:this.imgURL,
+      };
+      this.$store.dispatch("addProduct", payload);
+    },
+  },
+};
+</script>

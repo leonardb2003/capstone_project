@@ -30,11 +30,6 @@
                   <label>UserRole</label>
               </div>
               <div class="insert-box">
-                  <i class="fa fa-picture-o" aria-hidden="true"></i>
-                  <input type="image" name="image" v-model="payload.userProfile" required>
-                  <label>UserProfile</label>
-              </div>
-              <div class="insert-box">
                   <input type="date" name="date" v-model="payload.joinDate" required>
               </div>
               <div class="remember-forgot">
@@ -154,7 +149,7 @@ export default {
       emailAdd: '',
       userPass: '',
       userRole: 'User',
-      userProfile: '',
+      userProfile: 'https://i.postimg.cc/dVDqFpMd/default-avatar-profile-icon-of-social-media-user-vector.jpg',
       joinDate: '',
     };
     const store = useStore();

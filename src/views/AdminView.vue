@@ -1,6 +1,7 @@
 <template>
     <div class="users">
         <h1>Users</h1>
+        <AddUser/>
     </div>
     <div class="container">
         <div class="row">
@@ -42,6 +43,7 @@
     </div>
     <div class="name">
         <h1>Products</h1>
+        <AddProduct/>
     </div>
     <div class="container">
         <div class="row">
@@ -56,7 +58,7 @@
                 <tbody>
                     <tr v-for="product in products" :key="product.prodID">
                     <td>
-                        {{ product.ProdName }}
+                        {{ product.prodName }}
                     </td>
                     <td>
                         {{ product.category }}
@@ -68,7 +70,7 @@
                         {{ product.prodQuantity }}
                     </td>
                     <td>
-                        <img :src="product.imgURL" :alt="product.ProdName">
+                        <img :src="product.imgURL" :alt="product.prodName">
                     </td>
                     <td>
                         <button class="btn btn-primary">Edit</button>
@@ -83,9 +85,15 @@
     </div>
 </template>
 <script>
+import AddUser from '@/components/AddUser.vue';
+import AddProduct from '@/components/AddProduct.vue';
 import {computed} from '@vue/runtime-core';
 import { useStore } from 'vuex';
 export default{
+    components: {
+        AddUser,
+        AddProduct
+    },
     setup() {
         const store = useStore();
         store.dispatch("fetchUsers");

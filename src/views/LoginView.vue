@@ -14,7 +14,7 @@
         </div>
         <div class="insert-box">
           <i class="fa fa-lock" aria-hidden="true"></i>
-          <input type="password" name="password" v-model="payload.emailAdd" required>
+          <input type="password" name="password" v-model="payload.emailPass" required>
           <label>Password</label>
         </div>
         <div class="remember-forgot">
@@ -54,6 +54,7 @@ export default {
   methods: {
     login() {
       this.$store.dispatch("login", this.payload)
+      this.$router.push('/');
     }
   }
 }
