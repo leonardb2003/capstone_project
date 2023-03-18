@@ -31,6 +31,12 @@ class User{
                             httpOnly: true 
                         })
                         if(cResult) {
+                            res.status(200).json({
+                                msg: 'You are Logged in',
+                                bbToken: bbToken,
+                                result: data[0]
+                            })
+                        }else {
                             res.status(401).json({
                                 err: "You entered an invalid password or did not register"
                             })
@@ -194,7 +200,7 @@ class Product {
 } 
 // cart
 class Cart {
-    fetchCart(req, res) {
+    fetchCarts(req, res) {
         const strQry = `SELECT prodID, prodName, prodDescription, category, price, prodQuantity, imgURL
         FROM products;`;
         db.query(strQry, (err, results)=> {
@@ -202,6 +208,17 @@ class Cart {
             res.status(200).json({results: results})
         });
 
+    }
+    fetchCarts(req, res){
+        const strQry = 
+        `
+        SELECT userID, firstName, lastName, emailAdd, userPass, userRole, userProfile, joinDate
+        FROM users;
+        `
+        db.query(strQry, (err, data)=> {
+             if(err) throw err;
+            else res.status(200).json({results:data})
+        })
     }
 
 }

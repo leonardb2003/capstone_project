@@ -56,5 +56,10 @@ route.delete('/product/:id', (req, res)=> {
     product.deleteProduct(req, res);
 })
 
+// Cart
+route.get('/users', (req, res)=> {
+    cart.fetchCarts(req, res);
+})
+
 module.exports = route;
 
