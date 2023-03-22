@@ -15,7 +15,7 @@ class User{
         WHERE emailAdd = '${emailAdd}';
         `
         db.query(strQry, async(err, data)=> {
-            if(err) throw err;
+            if(err) console.warn(err);
             if((!data) || (data == null)){
                 res.status(401).json({
                     err: "You have provided an incorrect email address."});

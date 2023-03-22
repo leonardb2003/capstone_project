@@ -32,6 +32,6 @@ app.use(
 app.listen(port, ()=> {
     console.log(`Server is running at ${port}`)
 });
-// Handling all errors
+// // Handling all errors
 app.use(errorHandling);
 
