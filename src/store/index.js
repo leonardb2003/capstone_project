@@ -1,6 +1,8 @@
 import { createStore } from "vuex";
+import { useCookies } from "vue3-cookies";
 import axios from "axios";
 const bedUrl = "https://blossom-bee.onrender.com/";
+const {cookies} = useCookies();
 import router from "../router/index";
 
 export default createStore({
@@ -107,10 +109,15 @@ export default createStore({
     //   }
     // },
     async login(context, payload) {
+      console.log(payload)
       const res = await axios.post(`${bedUrl}login`, payload);
-      const { msg, err } = await res.data;
-      if (msg) {
+      console.log("Response: ", res);
+      const { bbToken, result, msg , err } = await res.data;
+      if (result) {
+        console.log("Well done");
+        context.commit('setUser', result);
         context.commit("setMessage", msg);
+        cookies.set("LegitUser", bbToken);
         router.push("/");
       } else {
         context.commit("setMessage", err);
@@ -132,7 +139,7 @@ export default createStore({
         context.commit("setUser", results[0]);
       } else {
         context.commit("setMessage", err);
-      }
+      } 
     },
   },
   modules: {},

@@ -9,18 +9,18 @@
         <h2>Login</h2>
         <div class="insert-box">
           <i class="fa fa-envelope" aria-hidden="true"></i>
-          <input type="email" name="email" v-model="payload.emailAdd" required>
+          <input type="email"  v-model="payload.emailAdd" required>
           <label>Email</label>
         </div>
         <div class="insert-box">
           <i class="fa fa-lock" aria-hidden="true"></i>
-          <input type="password" name="password" v-model="payload.emailPass" required>
+          <input type="password"  v-model="payload.userPass" required>
           <label>Password</label>
         </div>
         <div class="remember-forgot">
           <label><input type="checkbox"> Remember Me </label><a href="#">Forgot Password?</a>
         </div>
-        <button class="enter"> Login </button>
+        <button class="enter" type="submit" @click.prevent="login"> Login </button>
         <div class="register-login">
           <p>Don't have an account? <router-link to ="/register"><a href="#" class="register-link">Register</a></router-link></p>
         </div>
@@ -39,24 +39,25 @@ export default {
       userPass: '',
     };
     const store = useStore();
-    // const login = ()=> {
-    //   store.dispatch("login", payload);
-    //   store.dispatch("fetchUsers");
-    // }
+    const login = () => {
+      store.dispatch("login", payload);
+      store.dispatch("fetchUsers");
+    }
     const userMsg = 
     computed( ()=>store.state.message)
 
     return {
       payload,
       userMsg,
+      login
     }
   },
-  methods: {
-    login() {
-      this.$store.dispatch("login", this.payload)
-      this.$router.push('/');
-    }
-  }
+//   methods: {
+//  login() {
+//   console.log('statement 1');
+//      this.$store.dispatch("login", this.payload);
+//     }
+//   }
 }
 </script>
 <style scoped>
