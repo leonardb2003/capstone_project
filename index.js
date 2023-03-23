@@ -9,7 +9,7 @@ const port = parseInt(process.env.PORT || 3000);
 const app = express();
 // Middleware
 const {errorHandling} = require('./middleware/ErrorHandling');
-//
+
 const cookieParser = require('cookie-parser');
 
 app.use((req, res, next)=> {
@@ -28,10 +28,9 @@ app.use(
     express.urlencoded({extended: true})
 )
 
-// Server is running
 app.listen(port, ()=> {
     console.log(`Server is running at ${port}`)
 });
-// // Handling all errors
+
 app.use(errorHandling);
 

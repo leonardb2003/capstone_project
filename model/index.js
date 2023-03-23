@@ -35,7 +35,7 @@ class User{
                                 msg: 'You are Logged in',
                                 bbToken: bbToken,
                                 result: data[0]
-                            })
+                            }) 
                         }else {
                             res.status(401).json({
                                 err: "You entered an invalid password or did not register"
@@ -100,15 +100,15 @@ class User{
     }
     updateUser(req, res) {
         let data = req.body;
-        if(data.userPass !== null || 
-            data.userPass !== undefined)
-            data.userPass = hashSync(data.userPass, 15);
+        // if(data.userPass !== null || 
+        //     data.userPass !== undefined){
+        //     data.userPass = hashSync(data.userPass, 15)};
         const strQry = 
         `
         UPDATE users
         SET ?
         WHERE userID = ?;
-        `;
+        `
         //db
         db.query(strQry,[data, req.params.id], 
             (err)=>{
