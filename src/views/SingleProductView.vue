@@ -9,6 +9,7 @@
                       <h5  class="card-cat">{{product?.category}}</h5>
                       <h5  class="card-price">R{{product?.price}}</h5>
                     </div>
+                    <button class="btn btn-light">Add To Cart</button>
             </div>
         </div>
     </div>
@@ -53,6 +54,11 @@ export default {
     font-size: 30px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin-top: 20px;
+}
+.btn{
+    margin-top: 90px;
+    width: 120px;
+    height: 60px;
 }
 
 </style>

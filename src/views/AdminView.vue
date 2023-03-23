@@ -31,10 +31,10 @@
                         <img :src="user.userProfile" :alt="user.firstname">
                     </td>
                     <td>
-                        <button class="btn btn-primary">Edit</button>
+                       <UpdateUser/> <button @click="updateUser(user.userID)" class="btn btn-primary">Edit</button>
                     </td>
                     <td>
-                        <button class="btn btn-dark">Delete</button>
+                        <button @click="deleteUser(user.userID)" class="btn btn-dark">Delete</button>
                     </td>
                 </tr>
                 </tbody>
@@ -73,10 +73,10 @@
                         <img :src="product.imgURL" :alt="product.prodName">
                     </td>
                     <td>
-                        <button class="btn btn-primary">Edit</button>
+                       <UpdateProduct/> <button @click="updateProduct(product.prodID)" class="btn btn-primary">Edit</button>
                     </td>
                     <td>
-                        <button class="btn btn-dark">Delete</button>
+                        <button @click="deleteProduct(product.prodID)" class="btn btn-dark">Delete</button>
                     </td>
                 </tr>
                 </tbody>
@@ -86,13 +86,17 @@
 </template>
 <script>
 import AddUser from '@/components/AddUser.vue';
+import UpdateProduct from '@/components/UpdateProduct.vue';
+import UpdateUser from '@/components/UpdateUser.vue';
 import AddProduct from '@/components/AddProduct.vue';
 import {computed} from '@vue/runtime-core';
 import { useStore } from 'vuex';
 export default{
     components: {
         AddUser,
-        AddProduct
+        AddProduct,
+        UpdateProduct,
+        UpdateUser
     },
     setup() {
         const store = useStore();
@@ -106,8 +110,19 @@ export default{
            users,
            products
         }
-    }
-}
+    },
+    methods:{
+        deleteProduct(id) {
+            this.$store.dispatch("deleteProduct", id);
+        },
+        deleteUser(id) {
+            this.$store.dispatch("deleteUser", id);
+        },
+        updateProduct(id) {
+            this.store.dispatch("updateProduct", id);
+        }
+    },
+};
 </script>
 <style scoped>
 .table img{
@@ -118,5 +133,9 @@ export default{
 }
  h1{
     margin-top: 30px;
+}
+.table{
+    border: solid 2px;
+
 }
 </style>

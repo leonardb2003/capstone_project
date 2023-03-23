@@ -26,7 +26,7 @@
               </div>
               <div class="insert-box">
                   <i class="fa fa-user-circle" aria-hidden="true"></i>
-                  <input type="text" name="name" v-model="payload.userRole" required>
+                  <input type="text" name="name" v-model="payload.userRole" required> 
                   <label>UserRole</label>
               </div>
               <div class="insert-box">
@@ -46,7 +46,7 @@
   position: relative;
   background: transparent;
   width: 500px;
-  height: 920px;
+  height: 820px;
   background-color: #b167e9;
   border: 2px solid #f5f1f4;
   border-radius: 40px;

@@ -67,6 +67,7 @@ export default createStore({
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
+          router.push('/login')
         })
         .catch((err) => {
           console.log(err);
@@ -114,7 +115,6 @@ export default createStore({
       console.log("Response: ", res);
       const { bbToken, result, msg , err } = await res.data;
       if (result) {
-        console.log("Well done");
         context.commit('setUser', result);
         context.commit("setMessage", msg);
         cookies.set("LegitUser", bbToken);
@@ -137,6 +137,46 @@ export default createStore({
       const { results, err } = await res.data;
       if (results) {
         context.commit("setUser", results[0]);
+      } else {
+        context.commit("setMessage", err);
+      } 
+    },
+    async deleteProduct(context, id) {
+      const res = await axios.delete(`${bedUrl}product/${id}`);
+      console.log(res);
+      const { msg, err } = await res.data;
+      if (msg) {
+        context.commit("setProduct", msg[0]);
+      } else {
+        context.commit("setMessage", err);
+      } 
+    },
+    async deleteUser(context, id) {
+      const res = await axios.delete(`${bedUrl}user/${id}`);
+      console.log(res);
+      const { msg, err } = await res.data;
+      if (msg) {
+        context.commit("setUser", msg[0]);
+      } else {
+        context.commit("setMessage", err);
+      } 
+    },
+    async updateUser(context, id) {
+      const res = await axios.put(`${bedUrl}user/${id}`);
+      console.log(res);
+      const { msg, err } = await res.data;
+      if (msg) {
+        context.commit("setUser", msg[0]);
+      } else {
+        context.commit("setMessage", err);
+      } 
+    },
+    async updateProduct(context, id) {
+      const res = await axios.put(`${bedUrl}product/${id}`);
+      console.log(res);
+      const { msg, err } = await res.data;
+      if (msg) {
+        context.commit("setProduct", msg[0]);
       } else {
         context.commit("setMessage", err);
       } 
