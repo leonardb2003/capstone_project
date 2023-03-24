@@ -1,9 +1,5 @@
 <template>
 <form @submit.prevent= "login">
-  <!-- <div data-aos="fade-left"
-     data-aos-anchor="#example-anchor"
-     data-aos-offset="600"
-     data-aos-duration="600"> -->
      <div class="container">
       <div class="form-box login">
         <h2>Login</h2>
@@ -82,7 +78,8 @@ export default {
 .form-box h2{
   font-size: 60px;
   text-align: center;
-  color: #332f2f;
+  color: #efe9e9;
+  font-family: 'Courier New', Courier, monospace;
 }
 .insert-box {
   margin: 40px 0;
@@ -147,7 +144,7 @@ export default {
   margin-right: 3px;
 }
 .register-login {
-  color: black;
+  color: #0d0d0d;
   text-align: center;
   font-size: 21px;
   margin: 30px;
@@ -155,5 +152,22 @@ export default {
 .register-link  {
   text-decoration: none;
   color: black;
+}
+@media (max-width:320px) {
+  .container{
+    width: 300px;
+    height: 563px
+}
+.form-box h2{
+  font-size: 30px;
+  text-align: center;
+  color:white;
+  font-family: 'Courier New', Courier, monospace;
+}
+.register-login {
+  color: black;
+  font-size: 20px;
+  margin: 20px;
+}  
 }
 </style>

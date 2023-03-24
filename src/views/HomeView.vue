@@ -41,4 +41,13 @@
     border-color: transparent
   }
 }
+@media (max-width:320px) {
+.home img{
+    margin-left: -115px;
+    width: 570px;
+    margin-top: -8px;
+    height: 600px;
+}
+  
+}
 </style>

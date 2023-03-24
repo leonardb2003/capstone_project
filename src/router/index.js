@@ -45,8 +45,16 @@ const routes = [
     name: 'singleProduct',
     component: () => import('../views/SingleProductView.vue')
   },
-
-  
+  {
+    path: '/updateProduct/:id',
+    name: 'updateProduct',
+    component: () => import('../components/UpdateProduct.vue')
+  },
+  {
+    path: '/updateUser/:id',
+    name: 'updateUser',
+    component: () => import('../components/UpdateUser.vue')
+  }, 
 ]
 
 const router = createRouter({

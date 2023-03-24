@@ -137,6 +137,22 @@
   text-decoration: none;
   color: #383535;
 }
+@media (max-width:320px) {
+  .form-box h2{
+    font-size: 20px;
+    text-align: center;
+    color: #fefbfb;
+}
+.insert-box .fa{
+    margin-left: 173px;
+    color: black;
+}
+.container{
+    width: 290px;
+    height: 770px;
+    background-color: transparent;
+}
+}
 </style>
 <script>
 import {computed} from '@vue/runtime-core';

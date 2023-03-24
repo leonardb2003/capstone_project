@@ -1,9 +1,9 @@
 import { createStore } from "vuex";
 import { useCookies } from "vue3-cookies";
 import axios from "axios";
+import router from "../router/index";
 const bedUrl = "https://blossom-bee.onrender.com/";
 const {cookies} = useCookies();
-import router from "../router/index";
 
 export default createStore({
   state: {
@@ -161,18 +161,18 @@ export default createStore({
         context.commit("setMessage", err);
       } 
     },
-    async updateUser(context, id) {
-      const res = await axios.put(`${bedUrl}user/${id}`);
-      console.log(res);
+    async updateUser(context, payload) {
+      const res = await axios.put(`${bedUrl}user/${payload.userID}`, payload);
       const { msg, err } = await res.data;
+      console.log("msg - update: ", msg);
       if (msg) {
-        context.commit("setUser", msg[0]);
+        context.commit("setMessage", msg);
       } else {
         context.commit("setMessage", err);
       } 
     },
-    async updateProduct(context, id) {
-      const res = await axios.put(`${bedUrl}product/${id}`);
+    async updateProduct(context, payload) {
+      const res = await axios.put(`${bedUrl}product/${payload.prodID}`, payload);
       console.log(res);
       const { msg, err } = await res.data;
       if (msg) {

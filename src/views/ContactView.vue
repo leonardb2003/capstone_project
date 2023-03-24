@@ -119,4 +119,27 @@
 .call, h4 p{
     color: black;
 }
+@media (max-width:320px){
+.container{
+    display: inline-block;
+    justify-content: none;
+}    
+.box textarea{
+width:250px
+}
+.input-box label{
+    margin-top: 50px;
+    font-size: 20px;
+    color: black;
+    font-family: monospace;
+}
+.info{
+    padding: 30px;
+    /* width: 300px; */
+    height: 400px;
+    border-radius: 5px;
+    box-shadow: 0 0 24px 0 rgba(0,0,0,0.12);
+}
+    
+}
 </style>

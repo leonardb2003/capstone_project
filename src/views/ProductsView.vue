@@ -68,4 +68,16 @@ export default{
  .btn{
     margin: 10px;
  } 
+ @media (max-width:320px) {
+    .card{
+      width: 300px
+    }
+    .row{
+        display: inline-block;
+    }
+    .card img{
+        height: 270px;
+    }
+    
+ }
 </style>

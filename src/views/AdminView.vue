@@ -31,7 +31,7 @@
                         <img :src="user.userProfile" :alt="user.firstname">
                     </td>
                     <td>
-                       <UpdateUser/> <button @click="updateUser(user.userID)" class="btn btn-primary">Edit</button>
+                        <UpdateUser :user="user"/>
                     </td>
                     <td>
                         <button @click="deleteUser(user.userID)" class="btn btn-dark">Delete</button>
@@ -73,7 +73,7 @@
                         <img :src="product.imgURL" :alt="product.prodName">
                     </td>
                     <td>
-                       <UpdateProduct/> <button @click="updateProduct(product.prodID)" class="btn btn-primary">Edit</button>
+                        <UpdateProduct :product="product"/> 
                     </td>
                     <td>
                         <button @click="deleteProduct(product.prodID)" class="btn btn-dark">Delete</button>
@@ -118,9 +118,6 @@ export default{
         deleteUser(id) {
             this.$store.dispatch("deleteUser", id);
         },
-        updateProduct(id) {
-            this.store.dispatch("updateProduct", id);
-        }
     },
 };
 </script>
