@@ -2,9 +2,11 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const route = express.Router();
-const {User, Product} = require('../model');
+const {User, Product, Cart} = require('../model');
 const user = new User();
+const cart = new Cart();
 const product = new Product();
+
 route.get("^/$|/Blossom Bee", (req, res)=> {
     res.status(200).sendFile(path.join(__dirname, "../view/index.html"));
 });
@@ -57,9 +59,20 @@ route.delete('/product/:id', (req, res)=> {
 })
 
 // Cart
-route.get('/users', (req, res)=> {
-    cart.fetchCarts(req, res);
+route.get('/user/:id/carts', (req, res)=> {
+    cart.fetchCartItem(req, res);
 })
-
+// add new item to cart
+route.post('/user/:id/cart', bodyParser.json(), (req,res)=>{
+    cart.addCartItem(req,res);
+})
+// update cart
+route.put('/user/:id/cart/:id', bodyParser.json(), (req,res)=> {
+    cart.updateCartItem(req,res);
+})
+// delete cart
+route.delete( '/user/:id/carts', (req,res)=>{
+    cart.deleteCartItem(req,res);
+}) 
 module.exports = route;
 

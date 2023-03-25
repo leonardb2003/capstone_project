@@ -200,29 +200,66 @@ class Product {
 } 
 // cart
 class Cart {
-    fetchCarts(req, res) {
-        const strQry = `SELECT prodID, prodName, prodDescription, category, price, prodQuantity, imgURL
-        FROM products;`;
-        db.query(strQry, (err, results)=> {
+    fetchCartItem(req,res) {
+        const strQry =
+        `
+        SELECT prodName, prodDescription, category, price, prodQuantity, imgURL
+        FROM carts
+        INNER JOIN products
+        ON carts.prodID = products.prodID
+        WHERE carts.userID = ${req.params.id};
+        `
+        db.query(strQry,(err, results)=> {
             if(err) throw err;
             res.status(200).json({results: results})
         });
-
     }
-    fetchCarts(req, res){
+    addCartItem(req, res) {
         const strQry = 
         `
-        SELECT userID, firstName, lastName, emailAdd, userPass, userRole, userProfile, joinDate
-        FROM users;
+        INSERT INTO carts
+        SET ?;
         `
-        db.query(strQry, (err, data)=> {
-             if(err) throw err;
-            else res.status(200).json({results:data})
-        })
+        db.query(strQry, [req.body],
+            (err)=> {
+                if(err){
+                    res.status(400).json({err: "Could not insert a new record."});
+                }else {
+                    res.status(200).json({msg: "A product was successfully saved to cart."});
+                }
+            } 
+        );    
     }
-
+    updateCartItem(req,res) {
+        const strQry = 
+        `
+        UPDATE carts
+        SET ?
+        WHERE cartID = ?;
+        `
+        db.query(strQry,[req.body, req.params.id],
+            (err)=> {
+                if(err){
+                    res.status(400).json({err: "Could not update this record."});
+                }else{
+                    res.status(200).json({msg: "The product was successfully updated in cart."});
+                }
+            }
+        );
+    }
+    deleteCartItem(req, res) {
+        const strQry =
+        `
+        DELETE FROM carts
+        WHERE cartID= ?;
+        `
+        db.query(strQry, [req.params.id], (err)=> {
+            if(err) res.status(400).json({err: "This record was not found."});
+            res.status(200).json({msg: "A product was successfully deleted from the cart."});
+        })
+     }
 }
-
+ 
 
 module.exports = {
     User,
