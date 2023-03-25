@@ -226,7 +226,6 @@ export default createStore({
       const res= await axios.get(`${bedUrl}user/${id}`);
       console.log(res);
       const{msg, err} = await res.data;
-      // console.log(result);
       if(msg){
         context.commit("setUser",msg[0]);
         console.log(msg);

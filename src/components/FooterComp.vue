@@ -1,6 +1,6 @@
 <template>
     <div class="footer"> 
-        <h2>@Copy Rights | All Rights Reserved</h2>
+        <h2>@Copy Rights  Beyonce leonard| All Rights Reserved</h2>
         <div class="icons">
             <a href="https://www.instagram.com/leonard_beyonce/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
             <a href="https://twitter.com/beyonce_leonard" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
@@ -14,10 +14,11 @@
     color: #0c0c0c;
     font-weight: bold;
     font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
 }
 .icons .fa{
     color: black;
     margin-bottom: 20px;
-    font-size: 30px;
+    font-size: 20px;
 }
 </style>

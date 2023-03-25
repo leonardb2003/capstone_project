@@ -1,5 +1,4 @@
 <template>
-    <div class="background">
        <div class="container mt-5">
                <div class="row">
                     <div class="col">
@@ -29,7 +28,6 @@
                        </div>
                </div>
            </div>
-       </div>
 </template>
 <script>
  export default {
@@ -45,10 +43,6 @@
    }
 </script>
 <style scoped>
-.background{
-background: linear-gradient(black,rgb(80,201,227),black);
-min-height: 100vh;
-}
 .img-fluid{
    margin-right: 40px;
    margin-bottom: 30px;
@@ -65,16 +59,17 @@ min-height: 100vh;
 }
 .input-box h3{
    margin-right: 30px;
+   color: black;
 }
 .title{
- font-family: Georgia, 'Times New Roman', Times, serif;
- font-size: 20px;
- color: white;
+ font-family:'Courier New', Courier, monospace;
+ font-size: 0px;
+ color: #f6f4f7;
  text-decoration: underline;
 }
 .container{
  width: 40%;
- background: black;
+ background: blueviolet;
  align-items: center;
  border-radius: 3rem;
  padding-bottom: 10px;
@@ -88,26 +83,31 @@ form.button input{
  height: 100%;
  width: 100%;
  outline:none;
- background-image: (163deg, #00FF75 0%, #3700FF 100%);
+ background-image: (163deg, #ff00d9 0%, #ff0095 100%);
  border: none;
  font-size: 18px;
  font-weight: 500;
  letter-spacing: 1px;
  border-radius: 2em;
- background-color: linear-gradient(163deg, #00FF75 0%, #3700FF 100%);
+ background-color: linear-gradient(163deg, #ff00b3 0%, #00a2ff 100%);
 }
 .button input{
  width: 200px;
  border-radius: 10px;
- background: linear-gradient(163deg, #00FF75 0%, #3700FF 100%);
+ background: linear-gradient(163deg, #ff0088 0%, #0077ff 100%);
 }
 .button{
    padding: 40px;
 }
 @media (max-width: 320px) {
  .container{
-     max-width: 100%;
+     width: 300px;
  }
+ .img-fluid{
+   margin-right: 0px;
+   margin-bottom: 0px;
+   padding-top: 0px;
+}
 }
 </style>
 

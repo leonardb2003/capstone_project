@@ -9,7 +9,7 @@
                       <h5  class="card-cat">{{product?.category}}</h5>
                       <h5  class="card-price">R{{product?.price}}</h5>
                     </div>
-                    <button @click="addCartItem(user, product)" class="btn btn-light"><router-link to="/carts/:id"></router-link>Add To Cart</button>
+                    <router-link to="/carts/:id"> <button @click="addCartItem(user, product)" class="btn btn-light">Add To Cart</button></router-link> 
             </div>
         </div>
     </div>
@@ -54,7 +54,7 @@ export default {
 }
 .card-title{
     font-size: 40px;
-    color: white;
+    color: #fbf8f8;
 }
 .card-cat{
     font-size: 27px;
@@ -68,7 +68,7 @@ export default {
 .card-d{
     color: white;
     font-size: 30px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Courier New', Courier, monospace;
     margin-top: 20px;
 }
 .btn{
@@ -76,5 +76,12 @@ export default {
     width: 120px;
     height: 60px;
 }
-
+@media (max-width: 320px) {
+.col img[data-v-6a1e9602] {
+    width: 300px; 
+    height: 330px;
+    margin-top: 50px;
+    float: left;    
+}
+}
 </style>
