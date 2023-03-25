@@ -61,8 +61,8 @@ export default {
   position: relative;
   background: transparent;
   width: 500px;
-  height: 540px;
-  background-color: #b167e9;
+  height: 560px;
+  background-color: transparent;
   border: 2px solid #f5f1f4;
   border-radius: 40px;
   justify-content: center;
@@ -76,7 +76,7 @@ export default {
   padding: 50px;
 }
 .form-box h2{
-  font-size: 60px;
+  font-size: 40px;
   text-align: center;
   color: #efe9e9;
   font-family: 'Courier New', Courier, monospace;

@@ -9,20 +9,36 @@
                       <h5  class="card-cat">{{product?.category}}</h5>
                       <h5  class="card-price">R{{product?.price}}</h5>
                     </div>
-                    <button class="btn btn-light">Add To Cart</button>
+                    <button @click="addCartItem(user, product)" class="btn btn-light"><router-link to="/carts/:id"></router-link>Add To Cart</button>
             </div>
         </div>
     </div>
 </template>
-<script>
+<script>  
 export default {
     computed: {
         product() {
             return this.$store.state.product
+        },
+
+        data(){
+        return{
+            userID: '',
+            prodID: ""
         }
+    },
+    methods:{
+        addCartItem: function (user, product) {
+            return this.$store.dispatch("addCartItem", {
+                userID: user?.userID,
+                prodID: product?.prodID
+            })
+        },
+    },
     },
     created() {
         this.$store.dispatch('SingleProduct', this.$route.params.id)
+        this.$store.dispatch('/carts/:id', this.$route.params.id)
     }
 }
 </script>

@@ -28,6 +28,12 @@
         <li class="nav-item ">
           <i class="fa fa-phone" aria-hidden="true"></i><router-link to ="/contact"> Contact   </router-link>
         </li>
+        <li class="nav-item ">
+        <router-link to ="/carts/:id"><button class="btn"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button> </router-link>
+        </li>
+        <li class="nav-item ">
+        <router-link to ="/userProfile"><button class="btn"><i class="fa fa-user-circle" aria-hidden="true"></i></button> </router-link>
+        </li>
 
       </ul>
       <form class="d-flex" role="search">

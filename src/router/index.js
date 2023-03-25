@@ -55,6 +55,16 @@ const routes = [
     name: 'updateUser',
     component: () => import('../components/UpdateUser.vue')
   }, 
+  {
+    path: '/carts/:id',
+    name: 'carts',
+    component: () => import('../views/CartsView.vue')
+  }, 
+  {
+    path: '/userProfile',
+    name: 'userProfile',
+    component: () => import('../components/UserProfile.vue')
+  }, 
 ]
 
 const router = createRouter({

@@ -13,6 +13,7 @@ export default createStore({
     product: null,
     showSpinner: true,
     message: null,
+    carts: []
   },
   getters: {},
   mutations: {
@@ -34,6 +35,9 @@ export default createStore({
     setMessage(state, value) {
       state.message = value;
     },
+    setCarts(state, value) {
+      state.carts = value;
+    }
   },
   actions: {
     async fetchUsers(context) {
@@ -118,6 +122,8 @@ export default createStore({
         context.commit('setUser', result);
         context.commit("setMessage", msg);
         cookies.set("LegitUser", bbToken);
+        localStorage.setItem('user', JSON.stringify(result))
+        localStorage.setItem('userID', JSON.stringify(result.userID))
         router.push("/");
       } else {
         context.commit("setMessage", err);
@@ -174,13 +180,60 @@ export default createStore({
     async updateProduct(context, payload) {
       const res = await axios.put(`${bedUrl}product/${payload.prodID}`, payload);
       console.log(res);
-      const { msg, err } = await res.data;
+      const { msg, err,results } = await res.data;
       if (msg) {
-        context.commit("setProduct", msg[0]);
+        context.commit("setProduct", results);
       } else {
         context.commit("setMessage", err);
       } 
     },
+    async fetchCartItem (context,id){
+      const res = await axios.get(`${bedUrl}user/${id}/carts`);
+      const{err, results} = await res. data;
+     if(results){
+      console.log(results)
+      context.commit('setCarts',results);
+     }else{
+      console.log(err)
+      context.commit('setMessage', err)
+     }
+    },
+    async addCartItem(context, id){
+      const res = await axios.post(`${bedUrl}user/${id}/cart`);
+      const {err, results} = await res.data;
+      console.log(res)
+      if(results){
+        context.commit('setCarts', results);
+      }else context.commit('setMessage',err)
+    },
+    async updateCartItem(context, payload){
+      const res = await axios.put(`${bedUrl}carts`, payload);
+      const {err, results} = await res.data;
+      console.log(res)
+      if(results){
+        context.commit('setMessage', results);
+      }else context.commit('setMessage',err)
+    },
+    async deleteCartItem(context, id){
+      const res = await axios.delete(`${bedUrl}carts/${id}`);
+      const {err, results} = await res.data;
+      console.log(res)
+      if(results){
+        context.commit('setMessage', results);
+      }else context.commit('setMessage',err)
+    },
+    async UserProfile(context, id) {
+      const res= await axios.get(`${bedUrl}user/${id}`);
+      console.log(res);
+      const{msg, err} = await res.data;
+      // console.log(result);
+      if(msg){
+        context.commit("setUser",msg[0]);
+        console.log(msg);
+      }else{
+        context.commit("setMessage", err);
+      }
+    }
   },
   modules: {},
 });

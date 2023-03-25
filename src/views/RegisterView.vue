@@ -45,9 +45,9 @@
 .container{
   position: relative;
   background: transparent;
-  width: 500px;
+  width: 600px;
   height: 820px;
-  background-color: #b167e9;
+  background-color: transparent;
   border: 2px solid #f5f1f4;
   border-radius: 40px;
   justify-content: center;
@@ -61,7 +61,8 @@
   padding: 50px;
 }
 .form-box h2{
-  font-size: 60px;
+  font-size: 40px;
+  font-family: 'Courier New', Courier, monospace;
   text-align: center;
   color: #f9f4f4;
 }
